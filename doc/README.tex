@@ -1,0 +1,191 @@
+\documentclass{article}
+
+\usepackage{url, hyperref, graphicx}
+
+\title{A Graphical User Interface For Musical Audio Source Separation}
+
+\author{Jean-Louis Durrieu, EPFL}
+
+\date{2011}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+This program allows the user to separate an instrument from the rest of an audio mixture. The user can load an audio file, visualize the energies of the different notes, and can even select the notes that she identifies as those of the desired instrument. 
+
+\section{Installation}
+
+\subsection{Requirements}
+In order to use the Python scripts, the following software/packages/modules are needed:
+
+\begin{itemize}
+\item Qt            (\url{qt.nokia.com}, \textbf{included in PyQt4 binaries}, see below)
+\item Python        (use EPD: \url{http://www.enthought.com/products/epd.php})
+\item Numpy         (included in EPD)
+\item Scipy         (in EPD)
+\item Matplotlib    (in EPD)
+\item PyQt4         (\url{http://www.riverbankcomputing.co.uk/software/pyqt/download})
+\end{itemize}
+
+\subsection{Installation}
+Unpack the archive containing the program wherever you may find it again. That's it!
+
+\section{Usage}
+
+Launching the program is as simple as double-clicking on the Python script, as long as files with `.py' extensions are associated with your Python program. For a stable interface, you can double-click on 
+
+\begin{center}
+\texttt{separateLeadGUIControls.py}
+\end{center}
+
+For a (slightly less stable) interface, with playback ability, double-click on
+
+\begin{center}
+\texttt{separateLeadGUIControlsPlay.py}
+\end{center}
+
+If these files are not associated with Python, run your favorite command line tool (on Linux and MacOsX, that's the Terminal, on Windows, go `Start>run...' and then type `cmd' and press the `Return' key), change-directory to where you unpacked the archive and type:
+
+\begin{center}
+\texttt{python separateLeadGUIControls.py}
+\end{center}
+
+or, for playback ability:
+
+\begin{center}
+\texttt{python separateLeadGUIControlsPlay.py}
+\end{center}
+
+Note that for \texttt{separateLeadGUIControlsPlay.py} to work, you will need the Phonon Qt module, which should come with PyQt4.
+
+As of Sept. 8th, 2011, another interface is also available, with the axes for the waveform and the image being tied together. An additional axis is added that displays what is meant to be a musical piano staff system (but without the keys, it just looks odd...). One can use that interface with:
+
+\begin{center}
+\texttt{python separateLeadGUI2.py}
+\end{center}
+
+\section{Using the interface}
+Below is a typical ``workflow'', using the provided software:
+
+\begin{enumerate}
+\item Open a file (through Menu or ``Open File'' button or drag and drop
+                in the corresponding field)
+
+\item If desired, please precise a directory to which the program will write
+   the resulting files, in the ``Output Directory Suffix'' line. 
+   Note that for now, the program will simply concatenate the given suffix
+   with the full-path of the audio file (i.e. without the filename of that 
+   file). 
+
+\item Select desired parameters for the algorithm:
+\begin{itemize}
+\item \texttt{window length}: the window size, for the analysis frames
+        0.04644s is a good choice for singing voice, @44100Hz.
+        Consider longer windows for bass extraction.
+\item \texttt{min F0}: the lowest fundamental frequency F0 candidate
+\item \texttt{max F0}: the highest fundamental frequency F0 candidate
+\end{itemize}
+
+\item Launch first decomposition, by pushing ``Load File'' button.
+
+\item Wait for the computations to be computed (on Linux, one might
+   see the evolution of the display, not available for MacOSX or Win yet). This step may take some time, depending on the length of your file, your computer, and the above choice of parameters.
+
+\item Once the program is responsive again, the main window shows the matrix
+   of amplitudes, for each F0 candidate: it is a time-frequency representation
+   of the signal, with x-axis as time axis, and y-axis as F0 frequency axis.
+   For now, the time is indicated as the frame number (current step size
+   between frames is 12.5\% of window length), while the F0 scale is shown 
+   on a log2 scale, proportional to the Western Muscial scale. The different
+   A notes (A2: 110Hz, A3: 220Hz, A4: 440Hz,...) are also displayed, for
+   ease of use. For more details on the representation, see~\cite{Durrieu2011}.
+   
+   The user should then select the time-frequency zones corresponding to
+   the instrument she desires to separate. The provided matrix of amplitude
+   should help deciding and identifying these regions. When the user clicks,
+   and moves the mouse while left button is pressed, the selected region
+   corresponds to the line described by the mouse, and all the points
+   between that line plus and minus half a semitone. These regions are 
+   shown as red delimited contours.
+   
+   The user can zoom in the picture and move around thanks to the top
+   toolbar. Note however that each time after using these tools, she
+   needs to deactivate them again (by clicking again on the corresponding
+   button) in order to be able to proceed with the source selection.
+   She can also modify the display normalization, between 3 modes: 
+   no-normalization (displays the actual values in dB scale), normalizing
+   each frame by the maximum value, or by the sum of all values. The minimum
+   and maximum values to set the color scale can also be modified.
+   
+   Note also that the possibility of going back in the annotation is under
+   development. For now, the user can already choose the button ``Delete'',
+   and going over the previously selected zones will ``deselect'' them.
+   
+   If the application is separateLeadGUIControlsPlay.py, then the user can 
+   also have an audio feedback corresponding to the displayed time-range,
+   by clicking on the image with the mouse right-button. The same 
+   possibilities are enabled with separateLeadGUI2.py.
+
+\item Once satisfied with the selected regions, the user should click the
+   ``Separate'' button, which will launch the estimation of the separated
+   sources, given the user input. 
+   
+   Alternatively, the user could also push the ``Separate (Melody)'' button,
+   which discards the user selected areas and, instead, automatically detects
+   the most prominent melody line, as published in our previous works~\cite{Durrieu2010}.
+\end{enumerate}
+
+Figure~\ref{fig:interface} represents the GUI of the program, after loading and selecting the regions of interest.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{guiWide.pdf}
+\caption{Graphical User Interface for User-Directed Source Separation.}
+\label{fig:interface}
+\end{figure}
+
+\section{Friendly feedback}
+
+The author would be greatful if the testers could provide some feedback.
+More specifically, some ergonomy issues encountered would be welcome, for
+instance:
+\begin{itemize}
+\item    adequation of the frequency scale for musicians/non-musicians?
+\item    readability of the representation?
+\item    Are the resulting signals (notably the ones with the \texttt{VUIMM}) satisfying?
+\end{itemize}
+
+\section{Known issues}
+12.8.2011:
+\begin{itemize}
+\item The PyQt4 module is somehow difficult to install on MacOsX. Hopefully, newer versions of Matplotlib will make it easy to use PySide instead, already included in EPD. 
+\end{itemize}
+31.8.2011: 
+\begin{itemize}
+\item The Phonon module has been added, but the playback on Linux is 
+      not smooth. 
+\item The ``right click to play'' is somehow conflicting with the pan/zoom 
+      tool (right click + move allows the zooming tool on the image, and 
+      will start or stop the playback)
+\end{itemize}
+
+30.8.2011:
+\begin{itemize}
+\item The interface may be a bit slow, sometimes, because, under the hood, 
+      each time the user changes the colormap range, or selects new regions,
+      quite some computation is going on (Matplotlib contours and \texttt{set\_clim}
+      stuff).
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem[DRDF2010]{Durrieu2010} 
+J.-L. Durrieu, G. Richard, B. David and C. F\'evotte, \emph{Source/Filter Model for Main Melody Extraction From Polyphonic Audio Signals}, IEEE Transactions on Audio, Speech and Language Processing, 
+special issue on Signal Models and Representations of Musical and 
+Environmental Sounds, March 2010, vol. 18 (3), pp. 564 -- 575.
+\bibitem[DRD2011]{Durrieu2011} J.-L. Durrieu, G. Richard and B. David, \emph{A Musically Motivated Representation For Pitch Estimation 
+And Musical Source Separation}, accepted to the IEEE Journal of Selected Topics on Signal Processing, 
+submitted on September 2010, publication expected on October 2011.
+\end{thebibliography}
+
+\end{document}
