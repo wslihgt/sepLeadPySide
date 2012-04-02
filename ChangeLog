@@ -1,0 +1,6 @@
+2012-03-31  Jean-Louis Durrieu  <jean-louis.durrieu@epfl.ch>
+
+	* SeparateLeadStereo.py (SeparateLeadProcess.__init__): 
+	added np.abs() for the data, to avoid clipping (until now, 
+	worked because data mostly centered, and symmetric)
+

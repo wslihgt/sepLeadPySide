@@ -329,7 +329,7 @@ class SeparateLeadProcess():
         # for some bad format wav files, data is a str?
         # cf. files from beat/tempo evaluation campaign of MIREX
         ## print self.fs, data
-        self.scaleData = 1.2 * data.max() # to rescale the data.
+        self.scaleData = 1.2 * np.abs(data).max() # to rescale the data.
         self.dataType = data.dtype
         data = np.double(data) / self.scaleData # makes data vary from -1 to 1
         if data.shape[0] == data.size: # data is multi-channel

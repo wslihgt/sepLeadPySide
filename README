@@ -1,24 +1,23 @@
 A Graphical User Interface For Musical Audio Source Separation
 
-Jean-Louis Durrieu, EPFL, 2011
+Jean-Louis Durrieu, EPFL, 2011-2012
+http://www.durrieu.ch/research
+
+PRELIMINARY NOTE:
+Check also README_v2.pdf for updated documentation.
 
 REQUIREMENTS:
 
 Qt            (qt.nokia.com, included in PyQt4 binaries, see below)
 Python        (use EPD: http://www.enthought.com/products/epd.php)
-Numpy         (included in EPD)
-Scipy         (in EPD)
-Matplotlib    (in EPD)
-PyQt4         (http://www.riverbankcomputing.co.uk/software/pyqt/download)
+Numpy         (included in EPD, http://numpy.scipy.org)
+Scipy         (in EPD, http://www.scipy.org)
+Matplotlib    (in EPD, http://matplotlib.sourceforge.net)
+PySide        (in EPD, http://www.pyside.org)
 
 USAGE:
 
-python separateLeadGUIControls.py
-
-Or, for playback ability (the Phonon Qt module is required for that,
-but should have been installed with PyQt4):
-
-python separateLeadGUIControlsPlay.py
+python separateLeadGUI2.py
 
 USING THE INTERFACE:
 
@@ -126,6 +125,11 @@ Environmental Sounds, March 2010, vol. 18 (3), pp. 564 -- 575.
 J.-L. Durrieu, G. Richard and B. David, 
 A Musically Motivated Representation For Pitch Estimation 
 And Musical Source Separation, 
-accepted to the IEEE Journal of Selected Topics on Signal Processing, 
-submitted on September 2010, publication expected on October 2011.
-
+IEEE Journal of Selected Topics on Signal Processing, 
+October 2011, Vol. 5 (6), pp. 1180 - 1191.
+[Durrieu2012]
+J.-L. Durrieu and J.-Ph. Thiran,
+Musical Audio Source Separation Based on User-Selected F0 Track,
+International Conference on Latent Variable Analysis and Signal Separation
+(LVA/ICA), March 12-15, 2012, Tel-Aviv, Israel. 
+http://www.durrieu.ch/research/lvaica2012.html
