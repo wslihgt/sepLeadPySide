@@ -1,0 +1,10 @@
+*~
+*.pyc
+*.npz
+
+*.aux
+*.blb
+*.bll
+*.log
+*.out
+*.pdf
