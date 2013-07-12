@@ -2,7 +2,10 @@
 A Graphical User Interface For Musical Audio Source Separation
 ==============================================================
 
- :author: Jean-Louis Durrieu, EPFL, 2011-2012, http://www.durrieu.ch/research
+ :Authors: Jean-Louis Durrieu 
+ :Organization: LTS5, EPFL
+ :Date: 2011-2012
+ :Contact: http://www.durrieu.ch/research
 
 PRELIMINARY NOTE:
 =================
@@ -122,20 +125,8 @@ KNOWN BUGS:
 
 REFERENCES:
 ===========
-.. [Durrieu2010] J.-L. Durrieu, G. Richard, B. David and C. Févotte, 
-Source/Filter Model for Main Melody Extraction From Polyphonic Audio Signals, 
-IEEE Transactions on Audio, Speech and Language Processing, 
-special issue on Signal Models and Representations of Musical and 
-Environmental Sounds, March 2010, vol. 18 (3), pp. 564 -- 575.
+.. [Durrieu2010] J.-L. Durrieu, G. Richard, B. David and C. Févotte, Source/Filter Model for Main Melody Extraction From Polyphonic Audio Signals, IEEE Transactions on Audio, Speech and Language Processing, special issue on Signal Models and Representations of Musical and Environmental Sounds, March 2010, vol. 18 (3), pp. 564 -- 575.
 
-.. [Durrieu2011] J.-L. Durrieu, G. Richard and B. David, 
-A Musically Motivated Representation For Pitch Estimation 
-And Musical Source Separation, 
-IEEE Journal of Selected Topics on Signal Processing, 
-October 2011, Vol. 5 (6), pp. 1180 - 1191.
+.. [Durrieu2011] J.-L. Durrieu, G. Richard and B. David, A Musically Motivated Representation For Pitch Estimation And Musical Source Separation, IEEE Journal of Selected Topics on Signal Processing, October 2011, Vol. 5 (6), pp. 1180 - 1191.
 
-.. [Durrieu2012] J.-L. Durrieu and J.-Ph. Thiran,
-Musical Audio Source Separation Based on User-Selected F0 Track,
-International Conference on Latent Variable Analysis and Signal Separation
-(LVA/ICA), March 12-15, 2012, Tel-Aviv, Israel. 
-http://www.durrieu.ch/research/lvaica2012.html
+.. [Durrieu2012] J.-L. Durrieu and J.-Ph. Thiran, Musical Audio Source Separation Based on User-Selected F0 Track, International Conference on Latent Variable Analysis and Signal Separation (LVA/ICA), March 12-15, 2012, Tel-Aviv, Israel. http://www.durrieu.ch/research/lvaica2012.html
